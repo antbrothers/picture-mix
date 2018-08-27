@@ -18,6 +18,13 @@
       <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
       <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
     </form>
+    <vant-button
+        open-type="getPhoneNumber"
+        bind:getphonenumber="getPhoneNumber"
+      >获取电话</vant-button>
+      <vant-button type="primary">确认付款</vant-button>
+      <vant-button type="danger">确认付款</vant-button>
+      <vant-button type="warn">确认付款</vant-button>
     <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
   </div>
 </template>
