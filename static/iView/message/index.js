@@ -13,7 +13,6 @@ Component({
     data: {
         ...default_data
     },
-
     methods: {
         handleShow (options) {
             const { type = 'default', duration = 2 } = options;
