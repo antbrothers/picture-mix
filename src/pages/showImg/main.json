@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "合成图片",
+  "usingComponents": {
+    "i-button": "../../../static/iView/button/index"  
+  }
+}

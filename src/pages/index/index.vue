@@ -18,7 +18,8 @@
       <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
       <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
     </form>  
-     <i-button type="primary" @click="jump()">行内按钮</i-button>     
+     <i-button type="primary" @click="jump('../picture/main')">行内按钮</i-button>
+      <i-button type="primary" @click="jump('../showImg/main')">生成分享图片</i-button>     
     <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
     <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>
   </div>
@@ -44,8 +45,7 @@ export default {
       const url = '../logs/main'
       wx.navigateTo({ url })
     },
-    jump () {
-      const url = '../picture/main'
+    jump (url) {
       wx.navigateTo({ url })
     },
     getUserInfo () {
