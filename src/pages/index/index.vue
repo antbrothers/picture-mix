@@ -17,15 +17,10 @@
     <form class="form-container">
       <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
       <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>
-    <vant-button
-        open-type="getPhoneNumber"
-        bind:getphonenumber="getPhoneNumber"
-      >获取电话</vant-button>
-      <vant-button type="primary">确认付款</vant-button>
-      <vant-button type="danger">确认付款</vant-button>
-      <vant-button type="warn">确认付款</vant-button>
+    </form>  
+     <i-button @click="handleClick" type="primary">行内按钮</i-button>     
     <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
+    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>
   </div>
 </template>
 
@@ -55,20 +50,31 @@ export default {
         success: () => {
           wx.getUserInfo({
             success: (res) => {
+              console.log(res)
               this.userInfo = res.userInfo
             }
           })
         }
       })
     },
+    handleClick () {
+    },
     clickHandle (msg, ev) {
       console.log('clickHandle:', msg, ev)
+    },
+    onGotUserInfo (e) {
+      this.getUserInfo()
+    },
+    anth () {
+      this.getUserInfo()
     }
   },
 
   created () {
     // 调用应用实例的方法获取全局数据
     this.getUserInfo()
+  },
+  mounted () {
   }
 }
 </script>

@@ -11,6 +11,7 @@
 	"compileType": "miniprogram",
 	"appid": "wx82cf2d083b6d5262",
 	"projectname": "picture-mix",
+	"libVersion": "2.2.4",
 	"condition": {
 		"search": {
 			"current": -1,
