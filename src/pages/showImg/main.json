@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "合成图片",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
   "usingComponents": {
     "i-button": "../../../static/iView/button/index"  
   }

@@ -94,7 +94,7 @@ export default {
         console.log(res)
         const ctx = wx.createCanvasContext('shareImg')
         /* 绘制图像到画布  图片的位置你自己计算好就行 参数的含义看文档 */
-        /* ps: 网络图片的话 就不用加../../路径了 反正我这里路径得加 */
+        /* ps: 网络图片的话 就不用加/路径了 反正我这里路径得加 */
         ctx.drawImage('/' + res[0].path, 158, 190, 210, 210)
         ctx.drawImage('/' + res[1].path, 0, 0, 545, 771)
 
@@ -102,7 +102,7 @@ export default {
         ctx.setTextAlign('center') //  位置
         ctx.setFillStyle('#ffffff') //  颜色
         ctx.setFontSize(22) //  字号
-        ctx.fillText('分享文字描述', 545 / 2, 130) //  内容  不会自己换行 需手动换行
+        ctx.fillText('分享文字描分享文字描述述', 545 / 2, 130) //  内容  不会自己换行 需手动换行
         ctx.fillText('分享文字描述', 545 / 2, 160) //  内容
 
         /* 绘制 */
@@ -160,6 +160,10 @@ export default {
         }
       })
     }
+  },
+  async onPullDownRefresh () {
+    Object.assign(this.$data, this.$options.data())
+    wx.stopPullDownRefresh()
   }
 }
 </script>

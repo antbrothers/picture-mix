@@ -17,5 +17,14 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+#### 配置一个下拉刷新
+```
+# 在main.json 文件配置
+ "enablePullDownRefresh": true,
+ "backgroundTextStyle": "dark",
+# 在index.vue 的 methods 同级添加异步 async onPullDownRefresh
+async onPullDownRefresh () {
+  Object.assign(this.$data, this.$options.data())
+  wx.stopPullDownRefresh()
+}
+```
