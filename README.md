@@ -18,7 +18,7 @@ npm run build
 npm run build --report
 ```
 #### 配置一个下拉刷新
-```
+``` javascript
 # 在main.json 文件配置
  "enablePullDownRefresh": true,
  "backgroundTextStyle": "dark",
