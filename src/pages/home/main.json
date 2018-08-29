@@ -1,0 +1,15 @@
+{ 
+  "navigationBarTitleText": "饿了么",
+  "navigationBarBackgroundColor": "#0387FE",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "i-panel": "/static/iView/panel/index",
+    "i-input": "/static/iView/input/index",   
+    "i-button": "/static/iView/button/index",
+    "i-icon": "/static/iView/icon/index",
+    "i-grid": "/static/iView/grid/index",
+    "i-grid-item": "/static/iView/grid-item/index",
+    "i-grid-icon": "/static/iView/grid-icon/index",
+    "i-grid-label": "/static/iView/grid-label/index"
+  }
+}

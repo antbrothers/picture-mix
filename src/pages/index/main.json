@@ -1,7 +1,7 @@
 {
   "usingComponents": {
-    "i-panel": "../../../static/iView/panel/index/",
-    "i-input": "../../../static/iView/input/index/",   
-    "i-button": "../../../static/iView/button/index"    
+    "i-panel": "/static/iView/panel/index/",
+    "i-input": "/static/iView/input/index/",   
+    "i-button": "/static/iView/button/index"    
   }
 }

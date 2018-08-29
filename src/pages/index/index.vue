@@ -17,9 +17,10 @@
     <form class="form-container">
       <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
       <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>  
-     <i-button type="primary" @click="jump('../picture/main')">行内按钮</i-button>
-      <i-button type="primary" @click="jump('../showImg/main')">生成分享图片</i-button>     
+    </form>    
+     <i-button type="primary" size="large" @click="jump('../picture/main')">行内按钮</i-button>
+     <i-button type="primary" size="large" @click="jump('../showImg/main')">生成分享图片</i-button>
+     <i-button type="primary" size="large" @click="jump('../home/main')">主页</i-button>    
     <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
     <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>
   </div>
