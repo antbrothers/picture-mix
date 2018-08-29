@@ -1,16 +1,13 @@
 <template>
-  <div>
+  <div>   
     <!-- 画布大小按需定制 这里我按照背景图的尺寸定的  -->
-    <canvas canvas-id="shareImg" style="width:545px;height:771px"></canvas>
-    <!-- 生成分享图 这里的操作是把canvas绘制的图预览出来  -->
-    <i-button class='share' type='primary' bindtap='share' @click="doneImg()">生成分享图</i-button>
-
-    <!-- 预览分享图 这里就是上图展示的效果   -->
-    <!-- 刚开始是隐藏的 生成分享图之后显示, 用一个布尔变量来控制 这里的样式大家看图就写出来了 -->
-    <div v-if='hidden' class='preview'>
+    <canvas canvas-id="shareImg" style="width:545px;height:771px"></canvas>    
+    <!-- 预览区域  -->
+    <view v-show='hidden' class='preview'>
       <image v-bind:src='prurl' mode='widthFix'></image>
-      <button type='primary' size='mini' @click='saveImage()'>保存分享图</button>
-    </div>
+      <button type='primary' size='mini' @click='saveImage'>保存分享图</button>
+    </view>
+    <button class='share' type='primary' @click='doneImg'>生成分享图</button>
   </div>
 </template>
 <style scoped>
@@ -59,37 +56,32 @@ export default {
     }
   },
   mounted () {
-    // this.getImgs()
-  },
-  created () {
     this.getImgs()
   },
   methods: {
     getImgs () {
-      console.log(1)
       /* promise可以忽略 是用来改善异步回调执行顺序 与本功能没有大的关系 */
       let promise1 = new Promise(function (resolve, reject) {
-        console.log(2)
         /* 获得要在画布上绘制的图片 */
         wx.getImageInfo({
-          src: '../../../static/images/qrcode.jpg',
+          src: '/static/images/qrcode.jpg',
           success: function (res) {
-            console.log(3)
             resolve(res)
           },
           fail: function (err) {
+            console.log('错误')
             console.log(err)
           }
         })
       })
       let promise2 = new Promise(function (resolve, reject) {
         wx.getImageInfo({
-          src: '../../../static/images/qrbg.png',
+          src: '/static/images/qrbg.png',
           success: function (res) {
-            console.log(4)
             resolve(res)
           },
           fail: function (err) {
+            console.log('错误')
             console.log(err)
           }
         })
@@ -103,8 +95,8 @@ export default {
         const ctx = wx.createCanvasContext('shareImg')
         /* 绘制图像到画布  图片的位置你自己计算好就行 参数的含义看文档 */
         /* ps: 网络图片的话 就不用加../../路径了 反正我这里路径得加 */
-        ctx.drawImage('../../../' + res[0].path, 158, 190, 210, 210)
-        ctx.drawImage('../../../' + res[1].path, 0, 0, 545, 771)
+        ctx.drawImage('/' + res[0].path, 158, 190, 210, 210)
+        ctx.drawImage('/' + res[1].path, 0, 0, 545, 771)
 
         /* 绘制文字 位置自己计算 参数自己看文档 */
         ctx.setTextAlign('center') //  位置
@@ -114,16 +106,17 @@ export default {
         ctx.fillText('分享文字描述', 545 / 2, 160) //  内容
 
         /* 绘制 */
-        setTimeout(function () {
-          ctx.stroke()
-          ctx.draw()
-          console.log(6)
-        }, 500)
+        ctx.stroke()
+        ctx.draw()
+        console.log(6)
       })
     },
     // 画布生成图片
     doneImg () {
       var that = this
+      wx.showLoading({
+        title: '努力生成中...'
+      })
       wx.canvasToTempFilePath({
         x: 0,
         y: 0,
@@ -136,12 +129,15 @@ export default {
           console.log(res.tempFilePath)
           /* 这里 就可以显示之前写的 预览区域了 把生成的图片url给image的src */
           that.prurl = res.tempFilePath
+          wx.hideLoading()
           that.hidden = true
         },
         fail: function (res) {
+          console.log(8)
+          wx.hideLoading()
           console.log(res)
         }
-      })
+      }, that)
     },
     // 保存图片
     saveImage () {
