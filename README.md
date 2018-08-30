@@ -28,3 +28,22 @@ async onPullDownRefresh () {
   wx.stopPullDownRefresh()
 }
 ```
+### 使用swiper 组件， 自定义指示点
+``` java
+————————————————————————————————————————————————————
+|  @change      |   current 改变时会触发 change 事件 |
+|———————————————|———————————————————————————————————|
+|               |                                   |
+|———————————————————————————————————————————————————|
+# 使用swiper 组件，只能修改指示点的颜色,和选中的指示点的颜色,无法修改大小形状和位置，所以要自定义 ui
+<view class="dots">  
+  <block v-for="(itme, index) in imgUrls" v-bind:key="index">  
+    <view :class="['dot', index == currentSwiper ? ' active' : '']"></view>  
+  </block>  
+</view>
+
+swiperChange: function (e) {
+  console.log(e)
+    this.currentSwiper = e.mp.detail.current
+}
+```
