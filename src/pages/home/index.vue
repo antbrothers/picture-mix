@@ -472,6 +472,13 @@ export default {
       console.log(e)
       this.currentSwiper = e.mp.detail.current
     }
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '点呀点',
+      desc: '小程序，网站，h5',
+      path: '/pages/home/main'
+    }
   }
 }
 </script>
