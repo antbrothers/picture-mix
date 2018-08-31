@@ -5,7 +5,8 @@
     "pages/counter/main",
     "pages/picture/main",
     "pages/showImg/main",
-    "pages/home/main"
+    "pages/home/main",
+    "pages/question/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
