@@ -3,11 +3,11 @@
     <div class="t-banner">
       <img src="/static/images/t-banner.jpg" alt="" class="t-img" />
     </div>
-    <div class="first-question" v-if="first">
+    <div class="first-question" v-show="first">
       <div class="content-bg">      
         <radio-group class="radio-group" @change="radioChange">
           <div class="radio label-comm" v-for="(item, index) in items" v-bind:key="index">
-            <radio :value="item.name" :checked="item.checked"/>{{item.value}}
+            <radio :value="item.name" :checked="item.checked" />{{item.value}}
           </div>      
         </radio-group>
       </div>
@@ -15,11 +15,11 @@
         <i-button i-class="btn-cont" type="success" shape="square" size="large" @click="btnClick">下一题</i-button>
       </div>
     </div>
-    <div class="first-question" v-if="!first">
+    <div class="first-question" v-show="!first">
       <div class="content-bg">      
         <radio-group class="radio-group" @change="radioChange">
           <div class="radio label-comm" v-for="(item, index) in items" v-bind:key="index">
-            <radio :value="item.name" :checked="item.checked"/>{{item.value}}
+            <radio :value="item.name" />{{item.value}}
           </div>      
         </radio-group>
       </div>
@@ -46,12 +46,16 @@ export default {
         {name: 'ENG', value: '英国'},
         {name: 'TUR', value: '法国'}
       ],
+      firstProblem: '',
+      secondProblem: '',
       first: true
     }
   },
   methods: {
     radioChange (e) {
       console.log('radio发生change事件，携带value值为：', e.mp.detail.value)
+      this.firstPeoblem = e.mp.detail.value
+      console.log(this.items)
     },
     btnClick () {
       this.first = false
@@ -60,6 +64,10 @@ export default {
       this.first = true
     },
     submitClick () {
+      this.jump('../babyInfo/main')
+    },
+    jump (url) {
+      wx.navigateTo({ url })
     }
   }
 }

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "信息采集",
+  "usingComponents": {
+    "i-button": "/static/iView/button/index",
+    "i-radio-group": "/static/iView/radio-group/index",
+    "i-radio": "/static/iView/radio/index"
+  }
+}

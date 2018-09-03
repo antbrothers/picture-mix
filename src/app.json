@@ -6,7 +6,9 @@
     "pages/picture/main",
     "pages/showImg/main",
     "pages/home/main",
-    "pages/question/main"
+    "pages/question/main",
+    "pages/babyInfo/main",
+    "pages/upload/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
